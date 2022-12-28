@@ -1,18 +1,18 @@
-import { ReactNode } from 'react'
-import DefaultLayout from '../components/layouts/DefaultLayout'
+import './globals.css'
 
-type Props = {
-  children: ReactNode
-}
-
-const RootLayout = (props: Props) => {
-  console.log(props.props.segmentPath)
-
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html>
-      <body>{props.children}</body>
+    <html lang="en">
+      {/*
+        <head /> will contain the components returned by the nearest parent
+        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
+      */}
+      <head />
+      <body>{children}</body>
     </html>
   )
 }
-
-export default RootLayout
