@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx}', // Note the addition of the `app` directory.
@@ -6,18 +8,24 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      roboto: ['Roboto Slab', 'serif'],
+    },
+    extend: {
+      backgroundColor: {
+        'base-1': 'var(--bg-1)',
+        'base-2': 'var(--bg-2)',
+        'base-3': 'var(--bg-3)',
+        'base-4': 'var(--bg-4)',
+      },
+    },
     colors: {
-      red: '#FF0000',
-      blue: '#1fb6ff',
-      purple: '#7e5bef',
-      pink: '#ff49db',
-      orange: '#ff7849',
-      green: '#13ce66',
-      yellow: '#ffc82c',
-      'gray-dark': '#273444',
-      gray: '#8492a6',
-      'gray-light': '#d3dce6',
+      'base-1': 'var(--text-1)',
+      'base-2': 'var(--text-2)',
+      'base-3': 'var(--text-3)',
+      'base-4': 'var(--text-4)',
+      'primary-1': 'var(--primary-1)',
+      'primary-2': 'var(--primary-2)',
     },
   },
   plugins: [],

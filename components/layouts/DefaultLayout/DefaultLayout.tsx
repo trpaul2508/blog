@@ -8,11 +8,10 @@ type Props = {
 
 const DefaultLayout = ({ children }: Props) => {
   return (
-    <div className="">
-      <h1 className="text-3xl font-bold underline">Default Layout</h1>
+    <div className="flex flex-wrap  ">
       <Nav />
       <Sidebar />
-      <div className="">{children}</div>
+      <main className="h-full flex-1 ">{children}</main>
     </div>
   )
 }

@@ -8,10 +8,11 @@ type Props = {
 
 const DashboardLayout = ({ children }: Props) => {
   return (
-    <div className="">
-      <h1>DashboardLayout</h1>
+    <div className="flex  flex-wrap">
+      {/* <h1>DashboardLayout</h1> */}
       <Nav />
       <Sidebar />
+
       <div className="">{children}</div>
     </div>
   )
