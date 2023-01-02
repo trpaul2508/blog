@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { DefaultLayout } from '../components/layouts'
+import { CartProvider } from '../context/CartContext'
 import './styles/globals.scss'
 
 export default function RootLayout({
@@ -12,7 +13,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${theme} theme-1 h-screen font-roboto `}>
-        <DefaultLayout>{children}</DefaultLayout>
+        <CartProvider>
+          <DefaultLayout>{children}</DefaultLayout>
+        </CartProvider>
       </body>
     </html>
   )

@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import { CartContext } from '../../../context/CartContext'
 
 type Props = {}
 
@@ -45,7 +46,8 @@ const items: ItemNav[] = [
 ]
 
 const Sidebar = ({}: Props) => {
-  const routerPath = useRouter()
+  const qty = useContext(CartContext)
+  // console.log(qty)
   return (
     <ul className="flex flex-col gap-4 p-2 theme-2 h-full border-opacity-50 border-">
       {items.map((item, index) => (
@@ -56,6 +58,7 @@ const Sidebar = ({}: Props) => {
           >
             <span className="material-symbols-outlined mr-4">{item.icon}</span>
             <span>{item.name}</span>
+            <span className="ml-auto">{item.path === '/cart' && qty?.[0]}</span>
           </Link>
         </li>
       ))}
