@@ -11,7 +11,7 @@ export default function RootLayout({
   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
   return (
     <html lang="en">
-      <body className={`${theme} theme-1 font-roboto `}>
+      <body className={`${theme} theme-1 h-screen font-roboto `}>
         <DefaultLayout>{children}</DefaultLayout>
       </body>
     </html>

@@ -1,7 +1,3 @@
-type Props = {}
-
-const News = ({}: Props) => {
-  return <div className=" ">News Page</div>
-}
+import { News } from '../../components/news'
 
 export default News

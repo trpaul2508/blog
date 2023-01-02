@@ -1,5 +1,4 @@
-'use client'
-
+import './input.scss'
 import { useState } from 'react'
 
 type Props = {
@@ -11,20 +10,20 @@ type Props = {
 const Input = ({ name, value }: Props) => {
   const [valueInput, setValueInput] = useState(value)
   return (
-    <div className=" input-component flex pb-1 items-end relative  h-14 theme-4 rounded-md">
+    <div className="input-component theme-4">
       <input
-        placeholder="sssssssss"
-        className="peer w-full mx-2 z-10 "
+        placeholder=" "
+        className=""
         type="text"
         onChange={(e) => {
           setValueInput(e.target.value)
         }}
         value={valueInput ?? ''}
       />
-      <label className="input-component-label absolute pe  text-primary-1  left-2 text-2xl text-primary">
+      <label className="absolute  text-primary-1  left-2 text-2xl text-primary">
         {name} :
       </label>
-      <div className="input-component-after"></div>
+      <div className="input-component-after "></div>
     </div>
   )
 }

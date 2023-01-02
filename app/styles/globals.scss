@@ -15,56 +15,6 @@
   h1 {
     @apply text-4xl font-bold text-primary-1;
   }
-  .input-component {
-    .input-component-after {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      border: 1px solid var(--primary-1);
-      z-index: 200;
-    }
-    label {
-      // @apply text-lg;
-      top: 1rem;
-      opacity: 1;
-      transition: all 0.2s;
-    }
-
-    input {
-      background-color: inherit;
-      transition: opacity step-start 0.2s;
-      opacity: 0;
-      outline: none;
-      padding-bottom: 2px;
-    }
-    &:focus-within {
-      label {
-        @apply text-lg top-0;
-      }
-      input {
-        transition: opacity step-end 0.2s;
-        opacity: 1;
-      }
-      .input-component-after {
-        border: 2px solid var(--primary-1);
-      }
-    }
-
-    input:not(:placeholder-shown) {
-      @apply opacity-100 box-border;
-      & ~ label {
-        @apply text-lg top-0;
-      }
-    }
-
-    & input:not(:placeholder-shown) ~ .input-component-after {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      border: 2px solid var(--primary-1);
-      z-index: 200;
-    }
-  }
 }
 
 @layer components {
@@ -81,5 +31,12 @@
   }
   .theme-4 {
     @apply text-base-4 bg-base-4;
+  }
+
+  .theme-primary {
+    @apply bg-primary-1 text-gray-300;
+  }
+  .theme-active {
+    @apply bg-primary-2 text-white;
   }
 }
