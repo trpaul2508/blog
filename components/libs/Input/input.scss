@@ -1,14 +1,8 @@
 .input-component {
-  @apply flex pb-1 items-end relative h-12 theme-4 rounded-t-md;
   .input-component-after {
     @apply absolute bottom-0  border-b-primary-1 border-b w-full;
   }
-  label {
-    @apply top-4 opacity-100 font-bold text-primary-1 transition-all;
-  }
-  input {
-    @apply w-full mx-2 z-10 outline-none bg-transparent opacity-0 transition-all;
-  }
+
   &:focus-within {
     label {
       @apply text-base font-thin text-primary-1 top-0;

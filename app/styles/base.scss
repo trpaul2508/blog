@@ -1,0 +1,65 @@
+@tailwind base;
+@layer base {
+  :root {
+    --primary-1: 0 180 180;
+    --primary-2: 0 140 140;
+  }
+  .dark {
+    --text-4: 255 255 255;
+    --text-3: 235 235 235;
+    --text-2: 215 215 215;
+    --text-1: 175 175 175;
+    --bg-1: 0 0 0;
+    --bg-2: 20 20 20;
+    --bg-3: 40 40 40;
+    --bg-4: 60 60 60;
+  }
+  .light {
+    --bg-1: 255 255 255;
+    --bg-2: 230 230 230;
+    --bg-3: 230 230 230;
+    --bg-4: 205 205 205;
+    --text-1: 0 0 0;
+    --text-2: 25 25 25;
+    --text-3: 25 25 25;
+    --text-4: 50 50 50;
+  }
+  h1 {
+    @apply text-3xl sm:text-xl font-bold text-primary-1;
+  }
+  h2 {
+    @apply text-2xl sm:text-lg font-bold text-primary-1;
+  }
+  .theme-1 {
+    @apply text-base-1 bg-base-1;
+  }
+
+  .theme-2 {
+    @apply text-base-2 bg-base-2;
+  }
+
+  .theme-3 {
+    @apply text-base-3 bg-base-3;
+  }
+  .theme-4 {
+    @apply text-base-4 bg-base-4;
+  }
+
+  .theme-primary {
+    @apply bg-primary-1 text-gray-300;
+  }
+  .theme-active {
+    @apply bg-primary-2 text-white;
+  }
+  .none {
+    display: none;
+  }
+
+  input {
+    @apply theme-4 focus:outline-none px-4;
+  }
+
+  .material-symbols-outlined {
+    font-size: inherit;
+  }
+}

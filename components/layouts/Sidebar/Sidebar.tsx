@@ -1,7 +1,8 @@
-'use client'
 import Link from 'next/link'
 import { useContext } from 'react'
+import { Display } from '..'
 import { CartContext } from '../../../context/CartContext'
+import { Button } from '../../libs'
 
 type Props = {}
 
@@ -9,6 +10,7 @@ type ItemNav = {
   icon: string
   name: string
   path: string
+  mobile: boolean
 }
 
 const items: ItemNav[] = [
@@ -16,53 +18,91 @@ const items: ItemNav[] = [
     icon: 'home',
     name: 'Trang chủ',
     path: '/',
+    mobile: true,
   },
   {
     icon: 'newspaper',
     name: 'Tin tức',
     path: '/news',
+    mobile: true,
   },
 
   {
     icon: 'storefront',
     name: 'Sản phẩm',
     path: '/product',
+    mobile: true,
+  },
+  {
+    icon: 'contacts',
+    name: 'Chúng tôi',
+    path: '/contacts',
+    mobile: true,
   },
   {
     icon: 'shopping_bag',
     name: 'Giỏ hàng',
     path: '/cart',
+    mobile: true,
   },
+
   {
     icon: 'manage_accounts',
     name: 'Tài khoản',
     path: '/profile',
+    mobile: false,
   },
   {
     icon: 'dashboard',
     name: 'Quản lý',
     path: '/dashboard',
+    mobile: false,
   },
 ]
 
+const ItemNave = ({ icon, path, name, qty }: ItemNav & { qty: number }) => {
+  return (
+    <li className="hover:theme-2 relative sm:h-full  ">
+      <Link
+        href={path}
+        className="py-3 sm:p-0  hover:theme-4 pr-2 sm:pr-0 sm:w-12 h-full flex items-center  sm:justify-center  "
+      >
+        <Button
+          handleClick={() => {}}
+          icon={icon}
+          className="sm:w-full  sm:h-full   flex-center"
+        />
+        <Display.TabletVsDesktopLayout>
+          <span className="ml-4">{name}</span>
+        </Display.TabletVsDesktopLayout>
+        {path === '/cart' && (
+          <span className="sm:text-xs sm:top-0 sm:left-0  sm:absolute ml-auto mr-2">
+            {qty}
+          </span>
+        )}
+      </Link>
+    </li>
+  )
+}
+
 const Sidebar = ({}: Props) => {
   const qty = useContext(CartContext)
-  // console.log(qty)
+
   return (
-    <ul className="flex flex-col gap-4 p-2 theme-2 h-full border-opacity-50 border-">
-      {items.map((item, index) => (
-        <li key={index} className={``}>
-          <Link
-            className={`flex  items-center  theme-2 cursor-pointer p-2 text-2xl rounded-xl hover:theme-3`}
-            href={item.path}
-          >
-            <span className="material-symbols-outlined mr-4">{item.icon}</span>
-            <span>{item.name}</span>
-            <span className="ml-auto">{item.path === '/cart' && qty?.[0]}</span>
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul className="flex  sm:gap-0  sm:flex-row  gap-4 flex-col sm:h-full  sm:justify-between  sm:items-center  text-2xl  w-full  ">
+        {items.map((item, index) => {
+          if (!item.mobile) {
+            return (
+              <Display.TabletVsDesktopLayout key={index}>
+                {<ItemNave {...item} qty={qty?.[0] ?? 0} />}
+              </Display.TabletVsDesktopLayout>
+            )
+          }
+          return <ItemNave key={index} {...item} qty={qty?.[0] ?? 0} />
+        })}
+      </ul>
+    </>
   )
 }
 
